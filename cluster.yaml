@@ -1,0 +1,28 @@
+--- 
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: acp-rabbitmq-prod
+  region: sa-east-1
+  version: "1.28"
+vpc:
+  id: vpc-09772c6dfb74909db
+  subnets:
+    private:
+      us-east-1a:
+        id: subnet-06f95c087017a7b8e
+      us-east-1b:
+        id: subnet-0bb0cb878b1c22389
+      sa-east-1c:
+        id: subnet-02e9981173e9e7344
+    public:
+      us-east-1a:
+        id: subnet-06f95c087017a7b8e
+      us-east-1b:
+        id: subnet-0bb0cb878b1c22389
+managedNodeGroups:
+- name: general
+  privateNetworking: true
+  instanceType: c6i.xlarge
+  desiredCapacity: 1
+
