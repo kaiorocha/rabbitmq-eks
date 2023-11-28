@@ -5,8 +5,11 @@ metadata:
   name: acp-rabbitmq-prod
   region: sa-east-1
   version: "1.28"
+  securityGroups:
+        withShared: true
+        withLocal: true
+        attachIDs: ['sg-0747dc1b549832c52']
 vpc:
-  sharedNodeSecurityGroup: sg-0747dc1b549832c52
   id: vpc-09772c6dfb74909db
   subnets:
     private:
