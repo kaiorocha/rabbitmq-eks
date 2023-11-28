@@ -6,8 +6,8 @@ metadata:
   region: sa-east-1
   version: "1.28"
   securityGroups:
-        withShared: true
-        withLocal: true
+        withShared: "true"
+        withLocal: "true"
         attachIDs: ['sg-0747dc1b549832c52']
 vpc:
   id: vpc-09772c6dfb74909db
