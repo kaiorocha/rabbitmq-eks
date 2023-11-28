@@ -1,21 +1,27 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
 metadata:
-  name: rabbitmq
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-internal: true
+    service.beta.kubernetes.io/aws-load-balancer-type: elb
+    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-00924127b41a568d3,subnet-068c3eae575b77aba"
+  name: rabbitmq-cluster-prod
+  namespace: rabbitmq-system
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: rabbitmq
-  template:
-    metadata:
-      labels:
-        app: rabbitmq
-    spec:
-      containers:
-      - name: rabbitmq
-        image: rabbitmq:latest
-        ports:
-        - containerPort: 5672
-        - containerPort: 15672
-
+  replicas: 2
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500m
+    limits:
+      cpu: 1
+      memory: 1Gi
+  rabbitmq:
+          additionalConfig: |
+                  log.console.level = info
+                  channel_max = 700
+                  default_user= guest 
+                  default_pass = guest
+                  default_user_tags.administrator = true
+  service:
+    type: LoadBalancer
