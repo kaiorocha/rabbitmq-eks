@@ -4,7 +4,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-internal: true
     service.beta.kubernetes.io/aws-load-balancer-type: elb
-    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-00924127b41a568d3,subnet-068c3eae575b77aba"
+    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-0bb0cb878b1c22389,subnet-06f95c087017a7b8e"
   name: rabbitmq-cluster-prod
   namespace: rabbitmq-system
 spec:
